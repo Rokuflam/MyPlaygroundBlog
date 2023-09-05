@@ -30,6 +30,9 @@ class Post(models.Model):
     content = models.TextField(validators=[MinLengthValidator(10)])
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name="posts")
     tags = models.ManyToManyField(Tag, null=True)
+    
+    def __str__(self):
+        return f"{self.title}"
 
 
 class Comment(models.Model):
